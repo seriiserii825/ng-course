@@ -1,4 +1,4 @@
-<aside class="p-4 bg-slate-800 h-full border-t border-slate-600">
+<aside class="p-4 bg-slate-800 h-full border-t border-slate-600 flex flex-col gap-2">
   @if (sidebarItems && sidebarItems.length > 0) {
     @for (item of sidebarItems; track $index) {
       <app-sidebar-dropdown [item]="item" />
