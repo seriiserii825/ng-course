@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { ISidebarDropdownItem } from '../sidebar/interfaces/ISidebarDropdownItem';
 
 @Component({
@@ -9,5 +9,8 @@ import { ISidebarDropdownItem } from '../sidebar/interfaces/ISidebarDropdownItem
 export class SidebarDropdown {
   item = input.required<ISidebarDropdownItem>();
   children = computed(() => this.item().children || []);
-  isOpen = computed(() => this.children().length > 0);
+  isOpen = signal(false);
+  toggleOpen() {
+    this.isOpen.set(!this.isOpen());
+  }
 }

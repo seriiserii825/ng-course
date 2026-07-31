@@ -1,11 +1,33 @@
-<div class="py-2 px-4 bg-slate-700 border-t border-slate-600">
-  <div class="text-white">{{ item().title }}</div>
-</div>
-@if (isOpen()) {
-  <ul class="p-4 bg-slate-800 border border-slate-600">
+@if (children().length > 0) {
+  <button
+    (click)="toggleOpen()"
+    class="w-full flex items-center justify-between gap-2 py-2 px-4 bg-slate-700 border-t border-slate-600">
+    <div class="text-white font-medium">{{ item().title }}</div>
+    <svg
+      class="w-4 h-4 shrink-0 text-slate-300"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  </button>
+} @else {
+  <a
+    [href]="item().url"
+    class="block py-2 px-4 text-white font-medium bg-slate-700 border-t border-slate-600 hover:bg-slate-600 transition-colors">
+    {{ item().title }}
+  </a>
+}
+@if (isOpen() && children().length > 0) {
+  <ul class="py-2 bg-slate-800 border border-slate-600">
     @for (child of children(); track $index) {
-      <li class="mb-2">
-        <a [href]="child.url" class="text-white hover:text-slate-300">{{ child.title }}</a>
+      <li>
+        <a
+          [href]="child.url"
+          class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">
+          {{ child.title }}
+        </a>
       </li>
     }
   </ul>
