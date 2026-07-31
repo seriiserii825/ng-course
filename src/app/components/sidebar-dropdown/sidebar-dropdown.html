@@ -1,0 +1,12 @@
+<div class="py-2 px-4 bg-slate-700 border-t border-slate-600">
+  <div class="text-white">{{ item().title }}</div>
+</div>
+@if (isOpen()) {
+  <ul class="p-4 bg-slate-800 border border-slate-600">
+    @for (child of children(); track $index) {
+      <li class="mb-2">
+        <a [href]="child.url" class="text-white hover:text-slate-300">{{ child.title }}</a>
+      </li>
+    }
+  </ul>
+}
