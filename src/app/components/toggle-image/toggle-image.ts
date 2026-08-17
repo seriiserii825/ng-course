@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { Loading } from '../loading/loading';
 
 @Component({
   selector: 'app-toggle-image',
-  imports: [],
+  imports: [Loading],
   templateUrl: './toggle-image.html',
 })
 export class ToggleImage {

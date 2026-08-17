@@ -23,3 +23,15 @@
 button {
   cursor: pointer;
 }
+
+.svg-color svg *[fill] {
+  fill: currentcolor;
+}
+
+.svg-color svg *[stroke] {
+  stroke: currentcolor;
+}
+
+svg * {
+  transition-property: fill, stroke;
+}
