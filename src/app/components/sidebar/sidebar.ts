@@ -14,8 +14,8 @@ export class Sidebar {
       url: '/home',
     },
     {
-      title: 'About',
-      url: '/about',
+      title: 'Binding',
+      url: '/binding',
     },
     {
       title: 'Services',
