@@ -1,0 +1,11 @@
+<div class="section">
+  <h1 class="title">Toggle Image</h1>
+  <button class="mb-4 btn" (click)="toggleImageRandom()">Toggle image url</button>
+  <div class="relative w-1/2 aspect-video">
+    @if (isLoading()) {
+      <span class="py-8">Loading...</span>
+    } @else {
+      <img class="absolute top-0 left-0 w-full h-full" [src]="imageUrl" alt="Image 1" id="image1" />
+    }
+  </div>
+</div>
