@@ -11,7 +11,7 @@ export class Sidebar {
   sidebarItems: ISidebarDropdownItem[] = [
     {
       title: 'Home',
-      url: '/home',
+      url: '/',
     },
     {
       title: 'Binding',
