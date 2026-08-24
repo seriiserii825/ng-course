@@ -1,0 +1,43 @@
+<div class="bg-slate-800 border border-slate-600 rounded-lg overflow-hidden">
+  <div class="relative">
+    <img
+      src="https://picsum.photos/seed/room6/600/400"
+      alt="Deluxe Room"
+      class="w-full h-48 object-cover" />
+    <button
+      class="absolute top-2 right-2 w-9 h-9 flex items-center justify-center rounded-full bg-slate-900/70 text-white text-lg hover:bg-slate-900 transition-colors">
+      ♡
+    </button>
+    <span class="absolute top-2 left-2 px-2 py-1 rounded text-xs font-medium bg-emerald-600 text-white">
+      Available
+    </span>
+  </div>
+
+  <div class="p-4 flex flex-col gap-2">
+    <div class="flex items-start justify-between gap-2">
+      <h3 class="text-white font-semibold text-lg">Deluxe Room</h3>
+      <div class="flex items-center gap-1 text-amber-400 text-sm shrink-0">
+        <span>★</span>
+        <span>4.7</span>
+      </div>
+    </div>
+
+    <p class="text-slate-300 text-sm">Elegant room with a king-size bed.</p>
+
+    <div class="flex items-center justify-between text-sm text-slate-300">
+      <span>Capacity: 2 guests</span>
+      <span class="text-white font-semibold text-base">
+        €145<span class="text-slate-400 font-normal text-sm"> / night</span>
+      </span>
+    </div>
+
+    <app-btn-shared label="Book now" class="mt-2" />
+  </div>
+</div>
+
+<!--
+  Unavailable-room variant (apply once real data/state is wired):
+  - outer card: swap `bg-slate-800` -> `opacity-60 bg-slate-800/60`
+  - status badge: swap `bg-emerald-600` -> `bg-slate-600` and text "Available" -> "Unavailable"
+  - `app-btn-shared`: pass `[disabled]`/greyed className once bindings are added
+-->
