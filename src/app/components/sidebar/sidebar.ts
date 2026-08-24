@@ -1,6 +1,6 @@
+import { SidebarDropdown } from '@/app/components/sidebar-dropdown/sidebar-dropdown';
+import { ROUTE_PATHS } from '@/app/core/routes/route-paths.const';
 import { Component } from '@angular/core';
-import { ROUTE_PATHS } from '../../core/routes/route-paths.const';
-import { SidebarDropdown } from '../sidebar-dropdown/sidebar-dropdown';
 import { ISidebarDropdownItem } from './interfaces/ISidebarDropdownItem';
 
 @Component({

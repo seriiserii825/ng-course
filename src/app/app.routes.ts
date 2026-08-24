@@ -1,9 +1,9 @@
+import { NotFound } from '@/app/components/not-found/not-found';
+import { ROUTE_PATHS, ROUTE_SEGMENTS } from '@/app/core/routes/route-paths.const';
+import { DefaultLayout } from '@/app/layouts/default-layout/default-layout';
+import { BindingPage } from '@/app/pages/binding-page/binding-page';
+import { CalculatorPage } from '@/app/pages/calculator-page/calculator-page';
 import { Routes } from '@angular/router';
-import { DefaultLayout } from './layouts/default-layout/default-layout';
-import { CalculatorPage } from './pages/calculator-page/calculator-page';
-import { NotFound } from './components/not-found/not-found';
-import { BindingPage } from './pages/binding-page/binding-page';
-import { ROUTE_PATHS, ROUTE_SEGMENTS } from './core/routes/route-paths.const';
 
 export const routes: Routes = [
   {
