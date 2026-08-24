@@ -14,17 +14,17 @@
   </button>
 } @else {
   <a
-    [href]="item().url"
+    [routerLink]="item().url"
     class="block py-2 px-4 text-white font-medium bg-slate-700 border-t border-slate-600 hover:bg-slate-600 transition-colors">
     {{ item().title }}
   </a>
 }
 @if (isOpen() && children().length > 0) {
-  <ul class="py-2 bg-slate-800 border border-slate-600">
+  <ul class="bg-slate-800 border border-slate-600">
     @for (child of children(); track $index) {
       <li>
         <a
-          [href]="child.url"
+          [routerLink]="child.url"
           class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">
           {{ child.title }}
         </a>
