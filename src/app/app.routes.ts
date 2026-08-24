@@ -3,6 +3,7 @@ import { DefaultLayout } from './layouts/default-layout/default-layout';
 import { CalculatorPage } from './pages/calculator-page/calculator-page';
 import { NotFound } from './components/not-found/not-found';
 import { BindingPage } from './pages/binding-page/binding-page';
+import { ROUTE_PATHS, ROUTE_SEGMENTS } from './core/routes/route-paths.const';
 
 export const routes: Routes = [
   {
@@ -10,18 +11,18 @@ export const routes: Routes = [
     component: DefaultLayout,
     children: [
       {
-        path: 'calculator',
+        path: `${ROUTE_PATHS.CALCULATOR}`,
         component: CalculatorPage,
       },
       {
-        path: 'binding',
+        path: `${ROUTE_PATHS.BINDING}`,
         component: BindingPage,
       },
       {
         path: 'apps',
         children: [
           {
-            path: 'hotel-booking',
+            path: `${ROUTE_SEGMENTS.HOTEL_BOOKING}`,
             loadComponent: () =>
               import('./pages/apps/hotel-booking-page/hotel-booking-page').then(
                 (m) => m.HotelBookingPage,
