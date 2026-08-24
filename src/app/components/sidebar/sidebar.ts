@@ -18,16 +18,12 @@ export class Sidebar {
       url: '/binding',
     },
     {
-      title: 'Services',
-      url: '/services',
+      title: 'Apps',
+      url: '/apps',
       children: [
         {
-          title: 'Web Development',
-          url: '/services/web-development',
-        },
-        {
-          title: 'Mobile Development',
-          url: '/services/mobile-development',
+          title: 'Hotel Booking',
+          url: '/apps/hotel-booking',
         },
       ],
     },

@@ -17,6 +17,18 @@ export const routes: Routes = [
         path: 'binding',
         component: BindingPage,
       },
+      {
+        path: 'apps',
+        children: [
+          {
+            path: 'hotel-booking',
+            loadComponent: () =>
+              import('./pages/apps/hotel-booking-page/hotel-booking-page').then(
+                (m) => m.HotelBookingPage,
+              ),
+          },
+        ],
+      },
     ],
   },
   {
