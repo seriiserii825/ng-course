@@ -1,0 +1,10 @@
+<div class="flex items-center gap-2 border-b">
+  <input
+    #searchInput
+    type="text"
+    placeholder="Search rooms, press Enter to search..."
+    [value]="searchQuery()"
+    (keydown.enter)="searchQueryChange.emit(searchInput.value)"
+    class="w-full p-2" />
+  <button class="px-2 py-1 bg-gray-900 rounded" (click)="clearQuery.emit()">x</button>
+</div>
