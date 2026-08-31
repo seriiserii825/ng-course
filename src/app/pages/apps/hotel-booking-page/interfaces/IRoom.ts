@@ -7,4 +7,5 @@ export interface IRoom {
   image: string;
   available: boolean;
   rating: number;
+  favorite?: boolean;
 }

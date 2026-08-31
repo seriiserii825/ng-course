@@ -1,7 +1,7 @@
 import { Rooms } from '@/app/components/rooms/rooms';
 import { rooms } from '@/app/pages/apps/hotel-booking-page/data/rooms';
 import { IRoom } from '@/app/pages/apps/hotel-booking-page/interfaces/IRoom';
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-hotel-booking-page',
@@ -9,10 +9,11 @@ import { Component, signal } from '@angular/core';
   templateUrl: './hotel-booking-page.html',
 })
 export class HotelBookingPage {
-  availableRooms = signal<number>(2);
-  favorites = signal<number>(2);
   searchQuery = signal<string>('');
 
   rooms_data = rooms;
   filtered_rooms = signal<IRoom[]>(this.rooms_data);
+
+  availableRooms = computed(() => this.filtered_rooms().filter((room) => room.available).length);
+  favorites = computed(() => this.filtered_rooms().filter((room) => room.favorite).length);
 }
