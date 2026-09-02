@@ -16,32 +16,37 @@ export class HotelBookingPage {
   searchQuery = signal<string>('');
   onSearchQueryChange(value: string) {
     this.searchQuery.set(value);
-    this.filtered_rooms.set(
-      this.rooms_data.filter((room) => room.name.toLowerCase().includes(value.toLowerCase())),
-    );
   }
   onClearQuery() {
     this.searchQuery.set('');
-    this.filtered_rooms.set(this.rooms_data);
   }
 
   rooms_data = rooms;
-  filtered_rooms = signal<IRoom[]>(this.rooms_data);
-
-  availableRooms = computed(() => this.filtered_rooms().filter((room) => room.available).length);
-  favorites = computed(() => this.filtered_rooms().filter((room) => room.favorite).length);
 
   capacities = computed(() => {
-    const capacities = this.filtered_rooms().map((room) => room.capacity);
+    const capacities = this.rooms_data.map((room) => room.capacity);
     return Array.from(new Set(capacities)).sort((a, b) => a - b);
   });
 
-  capacityOptions = computed(() =>
-    this.capacities().map((capacity) => ({
+  capacityOptions = computed(() => [
+    { value: 0, label: 'All' },
+    ...this.capacities().map((capacity) => ({
       value: capacity,
       label: capacity.toString(),
     })),
-  );
+  ]);
 
   selected_capacity_option = signal<ISelectOption | undefined>(this.capacityOptions()[0]);
+
+  filtered_rooms = computed<IRoom[]>(() => {
+    const query = this.searchQuery().trim().toLowerCase();
+    const capacity = this.selected_capacity_option()?.value ?? 0;
+    return this.rooms_data.filter(
+      (room) =>
+        room.name.toLowerCase().includes(query) && (capacity === 0 || room.capacity === capacity),
+    );
+  });
+
+  availableRooms = computed(() => this.filtered_rooms().filter((room) => room.available).length);
+  favorites = computed(() => this.filtered_rooms().filter((room) => room.favorite).length);
 }
