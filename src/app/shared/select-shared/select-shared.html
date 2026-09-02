@@ -8,7 +8,8 @@
       class="min-w-28 flex items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-white cursor-pointer hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
       [class.opacity-50]="disabled"
       [class.pointer-events-none]="disabled"
-      (click)="toggleOpen()">
+      (click)="toggleOpen()"
+      (keydown)="onKeyDown($event)">
       <span class="truncate">{{ value?.label ?? 'Select…' }}</span>
       <svg
         class="w-4 h-4 shrink-0 text-slate-300 transition-transform"
@@ -24,10 +25,10 @@
   @if (isOpen) {
     <div
       class="absolute top-full left-0 mt-1 w-full rounded-lg border border-slate-600 bg-slate-800 shadow-lg z-10 overflow-hidden">
-      @for (option of options(); track option.value) {
+      @for (option of options(); track option.value; let i = $index) {
         <button
           class="block w-full border-0 px-3 py-2 text-left text-sm text-white cursor-pointer hover:bg-slate-700"
-          [class.bg-slate-700]="value?.value === option.value"
+          [class.bg-slate-700]="value?.value === option.value || activeIndex === i"
           (click)="selectOption(option)">
           {{ option.label }}
         </button>

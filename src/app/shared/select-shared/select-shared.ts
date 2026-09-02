@@ -22,6 +22,7 @@ export class SelectShared implements ControlValueAccessor {
   value?: ISelectOption;
   disabled = false;
   isOpen = false;
+  activeIndex = -1;
 
   onChange: (value: ISelectOption) => void = () => {};
   onTouched: () => void = () => {};
@@ -46,10 +47,61 @@ export class SelectShared implements ControlValueAccessor {
     if (this.disabled) {
       return;
     }
-    this.isOpen = !this.isOpen;
-    if (!this.isOpen) {
-      this.onTouched();
+    if (this.isOpen) {
+      this.close();
+    } else {
+      this.open();
     }
+  }
+
+  onKeyDown(event: KeyboardEvent): void {
+    if (this.disabled) {
+      return;
+    }
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        this.isOpen ? this.moveActive(1) : this.open();
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this.isOpen ? this.moveActive(-1) : this.open();
+        break;
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        if (this.isOpen && this.activeIndex >= 0) {
+          this.selectOption(this.options()[this.activeIndex]);
+        } else {
+          this.toggleOpen();
+        }
+        break;
+      case 'Escape':
+        if (this.isOpen) {
+          event.preventDefault();
+          this.close();
+        }
+        break;
+    }
+  }
+
+  private open(): void {
+    this.isOpen = true;
+    const current = this.options().findIndex((option) => option.value === this.value?.value);
+    this.activeIndex = current >= 0 ? current : 0;
+  }
+
+  private close(): void {
+    this.isOpen = false;
+    this.onTouched();
+  }
+
+  private moveActive(delta: number): void {
+    const length = this.options().length;
+    if (length === 0) {
+      return;
+    }
+    this.activeIndex = (this.activeIndex + delta + length) % length;
   }
 
   selectOption(option: ISelectOption): void {
