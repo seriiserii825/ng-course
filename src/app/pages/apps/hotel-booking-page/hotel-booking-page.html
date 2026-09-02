@@ -20,6 +20,10 @@
     [options]="capacityOptions()"
     [name]="'capacity'"
     [ngModel]="selected_capacity_option()"
-    (ngModelChange)="selected_capacity_option.set($event)" />
+    (ngModelChange)="onCapacityChange($event)" />
 </div>
-<app-rooms [rooms]="filtered_rooms()" />
+@if (isLoading()) {
+  <app-preloader />
+} @else {
+  <app-rooms [rooms]="filtered_rooms()" />
+}

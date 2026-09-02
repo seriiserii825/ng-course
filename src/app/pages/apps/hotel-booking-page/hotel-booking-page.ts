@@ -1,4 +1,5 @@
 import { SearchBooking } from '@/app/components/booking/search-booking/search-booking';
+import { Preloader } from '@/app/components/preloader/preloader';
 import { Rooms } from '@/app/components/rooms/rooms';
 import { rooms } from '@/app/pages/apps/hotel-booking-page/data/rooms';
 import { IRoom } from '@/app/pages/apps/hotel-booking-page/interfaces/IRoom';
@@ -9,16 +10,29 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-hotel-booking-page',
-  imports: [Rooms, SearchBooking, SelectShared, FormsModule],
+  imports: [Rooms, SearchBooking, SelectShared, FormsModule, Preloader],
   templateUrl: './hotel-booking-page.html',
 })
 export class HotelBookingPage {
   searchQuery = signal<string>('');
   onSearchQueryChange(value: string) {
     this.searchQuery.set(value);
+    this.startLoading();
   }
   onClearQuery() {
     this.searchQuery.set('');
+    this.startLoading();
+  }
+
+  onCapacityChange(option: ISelectOption) {
+    this.selected_capacity_option.set(option);
+    this.startLoading();
+  }
+
+  isLoading = signal<boolean>(false);
+  private startLoading() {
+    this.isLoading.set(true);
+    setTimeout(() => this.isLoading.set(false), 600);
   }
 
   rooms_data = rooms;
