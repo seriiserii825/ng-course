@@ -137,12 +137,11 @@ Max price: 150
 
 Например:
 
-```text
-Search: deluxe
 Guests: 2
 Status: Available
 Max price: 150
-```
+
+````
 
 Номер показывается только тогда,
 когда подходит под все условия.
@@ -170,7 +169,7 @@ Max price: 150
 
 ```text
 Unavailable
-```
+````
 
 ## Book now
 
