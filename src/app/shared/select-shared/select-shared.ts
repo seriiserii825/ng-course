@@ -17,6 +17,7 @@ import { ISelectOption } from './interfaces/ISelectOption';
 export class SelectShared implements ControlValueAccessor {
   options = input.required<ISelectOption[]>();
   name = input.required<string>();
+  label = input<string>();
 
   value?: ISelectOption;
   disabled = false;

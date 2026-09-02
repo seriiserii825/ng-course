@@ -1,17 +1,33 @@
 <div class="relative">
-  <button
-    class="bg-slate-600 text-2xl leading-none w-9 h-9 flex items-center justify-center text-white cursor-pointer px-2"
-    [class.opacity-50]="disabled"
-    (click)="toggleOpen()">
-    <span class="inline-flex items-center justify-center leading-none">
-      {{ value?.label ?? '—' }}
-    </span>
-  </button>
+  <div class="flex gap-4 items-center">
+    @if (label()) {
+      <label class="block text-sm text-slate-300 mb-1" [for]="name()">{{ label() }}</label>
+    }
+    <button
+      [id]="name()"
+      class="min-w-28 flex items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-white cursor-pointer hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+      [class.opacity-50]="disabled"
+      [class.pointer-events-none]="disabled"
+      (click)="toggleOpen()">
+      <span class="truncate">{{ value?.label ?? 'Select…' }}</span>
+      <svg
+        class="w-4 h-4 shrink-0 text-slate-300 transition-transform"
+        [class.rotate-180]="isOpen"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </button>
+  </div>
   @if (isOpen) {
-    <div class="absolute top-8 left-0 bg-slate-600 w-full text-white z-10">
+    <div
+      class="absolute top-full left-0 mt-1 w-full rounded-lg border border-slate-600 bg-slate-800 shadow-lg z-10 overflow-hidden">
       @for (option of options(); track option.value) {
         <button
-          class="border-0 block w-full cursor-pointer hover:bg-slate-700 p-2"
+          class="block w-full border-0 px-3 py-2 text-left text-sm text-white cursor-pointer hover:bg-slate-700"
+          [class.bg-slate-700]="value?.value === option.value"
           (click)="selectOption(option)">
           {{ option.label }}
         </button>
