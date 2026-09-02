@@ -1,5 +1,5 @@
 <div class="grid grid-cols-4 gap-4">
-  @for (room of rooms(); track room.id) {
+  @for (room of store.filteredRooms(); track room.id) {
     <app-room [room]="room" />
   }
 </div>

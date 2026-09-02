@@ -1,4 +1,5 @@
-import { Component, input, output } from '@angular/core';
+import { HotelBookingStore } from '@/app/pages/apps/hotel-booking-page/hotel-booking.store';
+import { Component, inject } from '@angular/core';
 
 @Component({
   imports: [],
@@ -6,7 +7,5 @@ import { Component, input, output } from '@angular/core';
   templateUrl: './search-booking.html',
 })
 export class SearchBooking {
-  searchQuery = input<string>('');
-  searchQueryChange = output<string>();
-  clearQuery = output<void>();
+  protected store = inject(HotelBookingStore);
 }

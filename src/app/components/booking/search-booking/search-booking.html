@@ -3,10 +3,10 @@
     #searchInput
     type="text"
     placeholder="Search rooms, press Enter to search..."
-    [value]="searchQuery()"
-    (keydown.enter)="searchQueryChange.emit(searchInput.value)"
+    [value]="store.searchQuery()"
+    (keydown.enter)="store.setSearchQuery(searchInput.value)"
     class="w-full p-2" />
-  <button class="p-2 h-6 flex items-center bg-gray-900 rounded" (click)="clearQuery.emit()">
+  <button class="p-2 h-6 flex items-center bg-gray-900 rounded" (click)="store.clearQuery()">
     x
   </button>
 </div>

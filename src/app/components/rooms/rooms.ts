@@ -1,6 +1,6 @@
 import { Room } from '@/app/components/room/room';
-import { IRoom } from '@/app/pages/apps/hotel-booking-page/interfaces/IRoom';
-import { Component, input } from '@angular/core';
+import { HotelBookingStore } from '@/app/pages/apps/hotel-booking-page/hotel-booking.store';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-rooms',
@@ -8,5 +8,5 @@ import { Component, input } from '@angular/core';
   templateUrl: './rooms.html',
 })
 export class Rooms {
-  rooms = input<IRoom[]>([]);
+  protected store = inject(HotelBookingStore);
 }
