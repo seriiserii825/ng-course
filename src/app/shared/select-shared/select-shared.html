@@ -1,7 +1,7 @@
 <div class="relative">
   <div class="flex gap-4 items-center">
     @if (label()) {
-      <label class="block text-sm text-slate-300 mb-1" [for]="name()">{{ label() }}</label>
+      <label class="label" [for]="name()">{{ label() }}</label>
     }
     <button
       [id]="name()"

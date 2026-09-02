@@ -21,6 +21,7 @@
     [name]="'capacity'"
     [ngModel]="selected_capacity_option()"
     (ngModelChange)="onCapacityChange($event)" />
+  <app-filter-status />
 </div>
 @if (isLoading()) {
   <app-preloader />

@@ -1,0 +1,9 @@
+<div class="flex gap-4 items-center">
+  <label class="label">Filter Status:</label>
+  @for (item of filterStatusOptions; track item.id) {
+    <app-btn-shared
+      [label]="item.label"
+      [className]="item.id === currentIndex() ? 'btn--success' : ''"
+      (click)="onFilterStatusChange(item.id)" />
+  }
+</div>

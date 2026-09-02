@@ -7,7 +7,10 @@
       [name]="'operation'"
       [options]="operations"></app-select-shared>
     <app-input-shared [(ngModel)]="secondNumber" [name]="'second'" [type]="'number'" />
-    <app-btn-shared [label]="'Calculate'" (clickEmit)="calculate()"></app-btn-shared>
+    <app-btn-shared
+      [className]="'btn--primary'"
+      [label]="'Calculate'"
+      (clickEmit)="calculate()"></app-btn-shared>
   </div>
   <footer class="flex items-center gap-12 mb-8">
     @if (result !== null) {

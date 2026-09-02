@@ -1,3 +1,4 @@
+import { FilterStatus } from '@/app/components/booking/filter-status/filter-status';
 import { SearchBooking } from '@/app/components/booking/search-booking/search-booking';
 import { Preloader } from '@/app/components/preloader/preloader';
 import { Rooms } from '@/app/components/rooms/rooms';
@@ -10,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-hotel-booking-page',
-  imports: [Rooms, SearchBooking, SelectShared, FormsModule, Preloader],
+  imports: [Rooms, SearchBooking, SelectShared, FormsModule, Preloader, FilterStatus],
   templateUrl: './hotel-booking-page.html',
 })
 export class HotelBookingPage {
